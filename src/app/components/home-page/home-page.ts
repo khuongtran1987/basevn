@@ -27,8 +27,22 @@ export class HomePage implements AfterViewInit {
       this.initAutoRotateTab();
       this.initAIAnimation();
       this.hideWebflowBadge();
+      this.ensureVideosPlay();
     }, 200);
   }
+
+  private ensureVideosPlay() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      if (video.paused) {
+        video.play().catch(e => {
+          console.warn('Video autoplay failed:', e);
+          // Try playing again on user interaction if needed
+        });
+      }
+    });
+  }
+
 
   private hideWebflowBadge() {
     const badge = document.querySelector('.w-webflow-badge');
