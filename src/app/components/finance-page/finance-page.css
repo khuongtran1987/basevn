@@ -1,6 +1,25 @@
+.wf-force-outline-none[tabindex='-1']:focus {
+  outline: none;
+}
+
+[fs-cc='banner'],
+[fs-cc='manager'],
+[fs-cc='preferences'],
+[fs-cc='interaction'] {
+  display: none;
+}
+
 .mask-wrapper {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%);
 }
 
 /* Make text look crisper and more legible in all browsers */
@@ -9,11 +28,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  --start-color: #99c9fa;
+  --end-color: #3d9bff;
 }
 
 /* Focus state style for keyboard navigation for the focusable elements */
 *[tabindex]:focus-visible,
-input[type="file"]:focus-visible {
+input[type='file']:focus-visible {
   outline: 0.125rem solid #4d65ff;
   outline-offset: 0.125rem;
 }
@@ -30,12 +51,11 @@ input[type="file"]:focus-visible {
 }
 
 /* Get rid of bottom margin on last element in any rich text element */
-.w-richtext>:last-child,
+.w-richtext> :last-child,
 .w-richtext ol li:last-child,
 .w-richtext ul li:last-child {
   margin-bottom: 0 !important;
 }
-
 
 /* Make sure containers never lose their center alignment */
 .container-medium,
@@ -80,7 +100,6 @@ a,
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-
 
 .text-style-1lines {
   display: -webkit-box;
@@ -207,6 +226,7 @@ select.global-light-input:valid {
   color: #111111;
 }
 
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -219,7 +239,11 @@ select.global-light-input:valid {
 
 .stroke-border-gradient {
   animation: spin 3s linear infinite;
-  background: conic-gradient(from 0 at 50% 50%, rgba(255, 255, 255, .5) 0deg, rgba(255, 255, 255, 0) 60deg, rgba(255, 255, 255, 0) 310deg, rgba(255, 255, 255, .5) 360deg);
+  background: conic-gradient(from 0 at 50% 50%,
+      rgba(255, 255, 255, 0.5) 0deg,
+      rgba(255, 255, 255, 0) 60deg,
+      rgba(255, 255, 255, 0) 310deg,
+      rgba(255, 255, 255, 0.5) 360deg);
 }
 
 .glowing-button-:hover .stroke-border-gradient {
@@ -227,73 +251,33 @@ select.global-light-input:valid {
   animation-play-state: running;
 }
 
-@keyframes spinStroke {
-  0% {
-    stroke-dashoffset: 0;
-  }
-
-  100% {
-    stroke-dashoffset: -580;
-  }
+.platform_rich_text strong,
+.platform_rich_text b {
+  display: inline-block;
+  background: linear-gradient(to right, var(--start-color), var(--end-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.stroke-loop {
-  stroke-dasharray: 200 300;
-  stroke-dashoffset: 0;
-  animation: spinStroke 2s linear infinite;
+.platform_name {
+  background: linear-gradient(to right, #99c9fa, #3d9bff);
+  -webkit-background-clip: text;
+  /* This clips the background to the text */
+  color: transparent;
+  /* Makes the text transparent to show the background gradient */
 }
 
-@keyframes fadeScaleIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.button-bg {
+  background: linear-gradient(180deg, #3d9bff 0%, #99c9fa 100%);
 }
 
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.7;
-  }
-}
-
-.animated-layer {
-  animation: fadeScaleIn 2s ease-out forwards;
-  opacity: 0;
-  transform-origin: center;
-}
-
-.core-pulse {
-  animation: pulse 2s ease-in-out infinite;
-  transform-origin: center;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.preferences-wrap {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
 
 /* Targets all slider dots */
 .w-slider-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #e2e8ff1a;
+  background-color: #e2e8ff;
   /* 10% opacity */
   transition: background-color 0.3s ease;
 }
@@ -301,68 +285,4 @@ select.global-light-input:valid {
 /* Targets the active slider dot */
 .w-slider-dot.w-active {
   background-color: #1e88e5;
-}
-
-/* Webkit-based browsers (Chrome, Edge, Safari) */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  height: 36px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-}
-
-/* Clean gradient stroke with background and blue blur effect */
-
-/* Clean gradient stroke with background and blue blur effect */
-.stroke-gradient {
-  background: rgba(226, 232, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.stroke-gradient::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      rgba(255, 255, 255, 0.6) 8%,
-      rgba(255, 255, 255, 0.2) 20%,
-      rgba(255, 255, 255, 0) 35%,
-      rgba(255, 255, 255, 0) 65%,
-      rgba(255, 255, 255, 0.2) 80%,
-      rgba(255, 255, 255, 0.6) 92%,
-      rgba(255, 255, 255, 0.8) 100%);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
-.stroke-gradient::after {
-  content: '';
-  position: absolute;
-  bottom: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 32px;
-  background: #078fff;
-  filter: blur(12px);
-  z-index: -1;
 }

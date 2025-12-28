@@ -1,12 +1,12 @@
 import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-we-work-page',
+  selector: 'app-hrm-page',
   imports: [],
-  templateUrl: './we-work-page.html',
-  styleUrl: './we-work-page.css',
+  templateUrl: './hrm-page.html',
+  styleUrl: './hrm-page.css',
 })
-export class WeWorkPage implements AfterViewInit {
+export class HrmPage implements AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       const Webflow = (window as any).Webflow;
