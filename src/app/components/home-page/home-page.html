@@ -130,8 +130,8 @@
           margin-left: auto !important;
         }
 
-        /* 
-Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+        /*
+Make the following elements inherit typography styles from the parent and not have hardcoded values.
 Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
 Uncomment this CSS to use it in the project. Leave this message for future hand-off.
 */
@@ -6531,18 +6531,6 @@ a,
 
       setInputValue("apikey", "test123");
 
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("form[action*='base-webflow-connect-crm']");
-      const params = window.location.search;
-
-      if (form && params) {
-        const baseAction = form.getAttribute("action").split("?")[0];
-        form.setAttribute("action", baseAction + params);
-      }
     });
   </script>
 

@@ -21,7 +21,7 @@ export class ScriptLoader {
         this.scripts[name] = { loaded: true, src };
         resolve();
       };
-      script.onerror = () => reject();
+      script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
       document.head.appendChild(script);
     });
   }
