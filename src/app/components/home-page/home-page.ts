@@ -11,13 +11,21 @@ export class HomePage implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
+    // Đảm bảo Webflow được khởi tạo lại nếu nó đã load xong từ index.html
     setTimeout(() => {
       const Webflow = (window as any).Webflow;
-      if (Webflow && Webflow.destroy && Webflow.ready) {
-        Webflow.destroy();
-        Webflow.ready();
-        console.log('Webflow re-initialized');
+      if (Webflow) {
+        if (Webflow.destroy) Webflow.destroy();
+        if (Webflow.ready) Webflow.ready();
+        if (Webflow.require) {
+          const ix2 = Webflow.require('ix2');
+          if (ix2 && ix2.init) ix2.init();
+        }
+        console.log('Webflow and IX2 re-initialized');
       }
+
+      const ScrollTrigger = (window as any).ScrollTrigger;
+      if (ScrollTrigger) ScrollTrigger.refresh();
 
       // Initialize all systems
       this.initNavbarDropdown();
@@ -27,8 +35,22 @@ export class HomePage implements AfterViewInit {
       this.initAutoRotateTab();
       this.initAIAnimation();
       this.hideWebflowBadge();
+      this.ensureVideosPlay();
     }, 200);
   }
+
+  private ensureVideosPlay() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      if (video.paused) {
+        video.play().catch(e => {
+          console.warn('Video autoplay failed:', e);
+          // Try playing again on user interaction if needed
+        });
+      }
+    });
+  }
+
 
   private hideWebflowBadge() {
     const badge = document.querySelector('.w-webflow-badge');
@@ -148,15 +170,24 @@ export class HomePage implements AfterViewInit {
     }
   }
 
-  private initSplide() {
+  private initSplide(retries = 0) {
     const Splide = (window as any).Splide;
-    const splideExtensions = (window as any).splide?.Extensions;
+    const Extensions = (window as any).splide?.Extensions || (window as any).Splide?.Extensions;
+
     if (Splide) {
       const splideEls = document.querySelectorAll('.splide');
+      if (splideEls.length === 0 && retries < 15) {
+        setTimeout(() => this.initSplide(retries + 1), 200);
+        return;
+      }
+
       const autoScrollSpeed = window.innerWidth < 768 ? 1.0 : 0.5;
+
       splideEls.forEach((el) => {
+        if ((el as any)._splide) return;
+
         try {
-          new Splide(el as HTMLElement, {
+          const splide = new Splide(el as HTMLElement, {
             autoWidth: true,
             arrows: false,
             pagination: false,
@@ -164,13 +195,38 @@ export class HomePage implements AfterViewInit {
             direction: 'ltr',
             gap: '1.5rem',
             type: 'loop',
-            autoScroll: { autoStart: true, speed: autoScrollSpeed, pauseOnHover: false },
-            intersection: { inView: { autoScroll: true }, outView: { autoScroll: false } },
-          }).mount(splideExtensions);
-        } catch (e) { }
+            autoScroll: {
+              autoStart: true,
+              speed: autoScrollSpeed,
+              pauseOnHover: false,
+            },
+            intersection: {
+              inView: { autoScroll: true },
+              outView: { autoScroll: false },
+            },
+          });
+
+          // Use any extensions available
+          const mountExtensions: any = {};
+          if (Extensions) {
+            if (Extensions.AutoScroll) mountExtensions.AutoScroll = Extensions.AutoScroll;
+            if (Extensions.Intersection) mountExtensions.Intersection = Extensions.Intersection;
+          }
+          // Also check other common locations
+          if ((window as any).splideAutoScroll) mountExtensions.AutoScroll = (window as any).splideAutoScroll.AutoScroll;
+
+          splide.mount(mountExtensions);
+          (el as any)._splide = splide;
+          console.log('Splide initialized successfully');
+        } catch (e) {
+          console.error('Error mounting Splide:', e);
+        }
       });
+    } else if (retries < 20) {
+      setTimeout(() => this.initSplide(retries + 1), 200);
     }
   }
+
 
   private initTabButtons() {
     const targetTab = document.querySelector('.w-tab-link.button-tab');
