@@ -366,3 +366,13 @@ select.global-light-input:valid {
   filter: blur(12px);
   z-index: -1;
 }
+
+section.section:not(.hide) {
+  min-height: auto;
+}
+
+section.section:not(.hide),
+footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, viewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
@@ -6,9 +6,11 @@ import { AfterViewInit, Component } from '@angular/core';
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
-export class HomePage implements AfterViewInit {
+export class HomePage implements AfterViewInit, OnDestroy {
+  sections = viewChildren('section', { read: ElementRef });
+  private mouseMoveHandler: ((event: MouseEvent) => void) | null = null;
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit() {
     // Đảm bảo Webflow được khởi tạo lại nếu nó đã load xong từ index.html
@@ -36,14 +38,34 @@ export class HomePage implements AfterViewInit {
       this.initAIAnimation();
       this.hideWebflowBadge();
       this.ensureVideosPlay();
+      this.setMousePosition();
     }, 200);
+  }
+
+  ngOnDestroy(): void {
+    if (this.mouseMoveHandler) {
+      globalThis.removeEventListener('mousemove', this.mouseMoveHandler);
+    }
+  }
+
+  setMousePosition() {
+    const interactiveEl = document.querySelector('.gradient-interactive');
+
+    if (interactiveEl) {
+      this.mouseMoveHandler = (event: MouseEvent) => {
+        (interactiveEl as HTMLElement).style.transform =
+          `translate(${event.clientX}px, ${event.clientY}px)`;
+      };
+
+      globalThis.addEventListener('mousemove', this.mouseMoveHandler);
+    }
   }
 
   private ensureVideosPlay() {
     const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
+    videos.forEach((video) => {
       if (video.paused) {
-        video.play().catch(e => {
+        video.play().catch((e) => {
           console.warn('Video autoplay failed:', e);
           // Try playing again on user interaction if needed
         });
@@ -51,43 +73,41 @@ export class HomePage implements AfterViewInit {
     });
   }
 
-
   private hideWebflowBadge() {
     const badge = document.querySelector('.w-webflow-badge');
     if (badge) badge.remove();
     // Also try removing after a bit more time as it might be injected late
     setTimeout(() => {
-      document.querySelectorAll('.w-webflow-badge').forEach(el => el.remove());
+      document.querySelectorAll('.w-webflow-badge').forEach((el) => el.remove());
     }, 1000);
   }
 
-
   private initNavbarDropdown() {
-    const toggles = document.querySelectorAll(".navbar02_dropdown-toggle");
-    const dropdown = document.querySelector(".navbar02_dropdown-list");
-    const overlay = document.querySelector(".overlay") as HTMLElement;
+    const toggles = document.querySelectorAll('.navbar02_dropdown-toggle');
+    const dropdown = document.querySelector('.navbar02_dropdown-list');
+    const overlay = document.querySelector('.overlay') as HTMLElement;
     let activeToggle: Element | null = null;
 
     if (!overlay) return;
 
     const showOverlay = (toggle: Element) => {
-      overlay.classList.add("active");
-      overlay.style.display = "block";
-      document.body.style.overflow = "hidden";
+      overlay.classList.add('active');
+      overlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
       activeToggle = toggle;
     };
 
     const hideOverlay = () => {
-      overlay.classList.remove("active");
-      overlay.style.display = "none";
-      document.body.style.overflow = "";
+      overlay.classList.remove('active');
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
       activeToggle = null;
     };
 
-    const isOverlayVisible = () => overlay && overlay.classList.contains("active");
+    const isOverlayVisible = () => overlay && overlay.classList.contains('active');
 
-    toggles.forEach(toggle => {
-      toggle.addEventListener("click", (event) => {
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', (event) => {
         event.stopPropagation();
         if (activeToggle === toggle && isOverlayVisible()) {
           hideOverlay();
@@ -97,7 +117,7 @@ export class HomePage implements AfterViewInit {
       });
     });
 
-    document.addEventListener("click", (event) => {
+    document.addEventListener('click', (event) => {
       const isClickInside =
         (activeToggle && activeToggle.contains(event.target as Node)) ||
         (dropdown && dropdown.contains(event.target as Node));
@@ -121,51 +141,53 @@ export class HomePage implements AfterViewInit {
     };
 
     const mapFields: { [key: string]: string } = {
-      utm_source: "utm_source",
-      utm_medium: "utm_medium",
-      utm_campaign: "utm_campaign",
-      utm_term: "utm_term",
-      utm_content: "utm_content",
-      custom_source_marketing: "utm_source",
-      custom_marketing_medium: "utm_medium",
-      custom_campaign_marketing: "utm_campaign",
-      custom_marketing_content: "utm_content",
-      custom_referral_id1: "ref",
+      utm_source: 'utm_source',
+      utm_medium: 'utm_medium',
+      utm_campaign: 'utm_campaign',
+      utm_term: 'utm_term',
+      utm_content: 'utm_content',
+      custom_source_marketing: 'utm_source',
+      custom_marketing_medium: 'utm_medium',
+      custom_campaign_marketing: 'utm_campaign',
+      custom_marketing_content: 'utm_content',
+      custom_referral_id1: 'ref',
     };
 
-    Object.keys(mapFields).forEach(field => {
+    Object.keys(mapFields).forEach((field) => {
       setInputValue(field, getQueryParam(mapFields[field]));
     });
 
-    setInputValue("custom_link_ads", window.location.href);
-    setInputValue("referral_url", document.referrer);
+    setInputValue('custom_link_ads', window.location.href);
+    setInputValue('referral_url', document.referrer);
     try {
       const domain = new URL(document.referrer).hostname;
-      setInputValue("referral_domain", domain);
-    } catch (e) { }
-    setInputValue("user_agent", navigator.userAgent);
-    setInputValue("apikey", "test123");
+      setInputValue('referral_domain', domain);
+    } catch (e) {}
+    setInputValue('user_agent', navigator.userAgent);
+    setInputValue('apikey', 'test123');
 
     // Form action UTM
     const form = document.querySelector("form[action*='base-webflow-connect-crm']");
     const params = window.location.search;
     if (form && params) {
-      const baseAction = form.getAttribute("action")?.split("?")[0];
-      if (baseAction) form.setAttribute("action", baseAction + params);
+      const baseAction = form.getAttribute('action')?.split('?')[0];
+      if (baseAction) form.setAttribute('action', baseAction + params);
     }
 
     // Internal links UTM
     const queryString = window.location.search;
     if (queryString.includes('utm_')) {
-      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]');
-      internalLinks.forEach(link => {
+      const internalLinks = document.querySelectorAll(
+        'a[href^="/"], a[href^="' + window.location.origin + '"]',
+      );
+      internalLinks.forEach((link) => {
         try {
           const hrefUrl = new URL((link as HTMLAnchorElement).href, window.location.href);
           if (!hrefUrl.search.includes('utm_')) {
             hrefUrl.search += (hrefUrl.search ? '&' : '') + queryString.slice(1);
             (link as HTMLAnchorElement).href = hrefUrl.toString();
           }
-        } catch (e) { }
+        } catch (e) {}
       });
     }
   }
@@ -213,7 +235,8 @@ export class HomePage implements AfterViewInit {
             if (Extensions.Intersection) mountExtensions.Intersection = Extensions.Intersection;
           }
           // Also check other common locations
-          if ((window as any).splideAutoScroll) mountExtensions.AutoScroll = (window as any).splideAutoScroll.AutoScroll;
+          if ((window as any).splideAutoScroll)
+            mountExtensions.AutoScroll = (window as any).splideAutoScroll.AutoScroll;
 
           splide.mount(mountExtensions);
           (el as any)._splide = splide;
@@ -226,7 +249,6 @@ export class HomePage implements AfterViewInit {
       setTimeout(() => this.initSplide(retries + 1), 200);
     }
   }
-
 
   private initTabButtons() {
     const targetTab = document.querySelector('.w-tab-link.button-tab');
@@ -242,10 +264,10 @@ export class HomePage implements AfterViewInit {
   }
 
   private initAutoRotateTab() {
-    const tabs = document.querySelectorAll(".tab_link_wrap") as NodeListOf<HTMLElement>;
-    const progressBar = document.querySelector(".procces_tab_running") as HTMLElement;
-    const ring = document.querySelector(".progress_ring") as HTMLElement;
-    const indicators = document.querySelectorAll(".process_tab_number");
+    const tabs = document.querySelectorAll('.tab_link_wrap') as NodeListOf<HTMLElement>;
+    const progressBar = document.querySelector('.procces_tab_running') as HTMLElement;
+    const ring = document.querySelector('.progress_ring') as HTMLElement;
+    const indicators = document.querySelectorAll('.process_tab_number');
 
     if (!tabs.length) return;
 
@@ -264,7 +286,7 @@ export class HomePage implements AfterViewInit {
       if (isInView && !isManualClick) {
         tabs[i].click();
       }
-      indicators.forEach((el, idx) => el.classList.toggle("is-active", idx === i));
+      indicators.forEach((el, idx) => el.classList.toggle('is-active', idx === i));
       lastIndex = i;
     };
 
@@ -288,12 +310,12 @@ export class HomePage implements AfterViewInit {
     };
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => {
+      tab.addEventListener('click', () => {
         isManualClick = true;
-        indicators.forEach((el, idx) => el.classList.toggle("is-active", idx === i));
+        indicators.forEach((el, idx) => el.classList.toggle('is-active', idx === i));
         if (isRunning || isInView) startLoop(i);
         else lastIndex = i;
-        setTimeout(() => isManualClick = false, 200);
+        setTimeout(() => (isManualClick = false), 200);
       });
     });
 
@@ -302,19 +324,19 @@ export class HomePage implements AfterViewInit {
     if (gsap && ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
       ScrollTrigger.create({
-        trigger: ".process_tab_wrapper",
-        start: "top 80%",
-        end: "bottom 20%",
+        trigger: '.process_tab_wrapper',
+        start: 'top 80%',
+        end: 'bottom 20%',
         onEnter: () => {
           isInView = true;
           if (!isRunning) startLoop(lastIndex !== -1 ? lastIndex : 0);
         },
-        onLeave: () => isInView = false,
+        onLeave: () => (isInView = false),
         onEnterBack: () => {
           isInView = true;
           if (!isRunning) startLoop(lastIndex !== -1 ? lastIndex : 0);
         },
-        onLeaveBack: () => isInView = false,
+        onLeaveBack: () => (isInView = false),
       });
     }
   }
@@ -328,7 +350,7 @@ export class HomePage implements AfterViewInit {
     let svg1Tween: any;
     const triggers = document.querySelectorAll('.base_ai_question');
     const answers = document.querySelectorAll('.base_ai_answer_card');
-    const svg1 = document.querySelector(".svg2_path") as any;
+    const svg1 = document.querySelector('.svg2_path') as any;
 
     if (!triggers.length || !svg1) return;
 
@@ -336,7 +358,7 @@ export class HomePage implements AfterViewInit {
 
     const updateLightColors = () => {
       for (let i = 1; i <= 8; i++) {
-        document.querySelectorAll(`#animatedGradient${i} stop`).forEach(stop => {
+        document.querySelectorAll(`#animatedGradient${i} stop`).forEach((stop) => {
           stop.setAttribute('stop-color', '#BCEBFF');
         });
       }
@@ -379,92 +401,108 @@ export class HomePage implements AfterViewInit {
         onComplete: () => {
           const index = activeTimelines.indexOf(tl);
           if (index > -1) activeTimelines.splice(index, 1);
-        }
+        },
       });
       activeTimelines.push(tl);
 
       tl.set(lightPath, { opacity: 1 });
       [0, 0.03, 0.06, 0.09, 0.13, 0.16].forEach((offset, i) => {
-        tl.fromTo(stops[i],
+        tl.fromTo(
+          stops[i],
           { attr: { offset: (offset + 1.0).toString() } },
-          { attr: { offset: (offset - 0.16).toString() }, duration: 0.9, ease: "linear" }, 0);
+          { attr: { offset: (offset - 0.16).toString() }, duration: 0.9, ease: 'linear' },
+          0,
+        );
       });
     };
 
     const killAllAnimations = () => {
       if (svg1Tween) svg1Tween.kill();
-      activeTimelines.forEach(tl => tl && tl.kill());
+      activeTimelines.forEach((tl) => tl && tl.kill());
       activeTimelines = [];
-      document.querySelectorAll('[id$="_light"]').forEach(path => gsap.set(path, { opacity: 0 }));
+      document.querySelectorAll('[id$="_light"]').forEach((path) => gsap.set(path, { opacity: 0 }));
       for (let i = 1; i <= 8; i++) {
         document.querySelectorAll(`#animatedGradient${i} stop`).forEach((stop, index) => {
           gsap.set(stop, { attr: { offset: `${index * 3}%` } });
         });
       }
-      answers.forEach(ans => {
-        gsap.set(ans, { display: "none" });
+      answers.forEach((ans) => {
+        gsap.set(ans, { display: 'none' });
         const player = lottieInstances.get(ans);
-        if (player && player.stop) { player.stop(); player.seek(0); }
+        if (player && player.stop) {
+          player.stop();
+          player.seek(0);
+        }
       });
     };
 
     const triggerQuestion = (trigger: Element) => {
       killAllAnimations();
-      triggers.forEach(t => t.classList.remove("is-active"));
-      trigger.classList.add("is-active");
+      triggers.forEach((t) => t.classList.remove('is-active'));
+      trigger.classList.add('is-active');
 
       const length = svg1.getTotalLength();
       gsap.set(svg1, { strokeDasharray: length, strokeDashoffset: length });
       svg1Tween = gsap.to(svg1, {
         strokeDashoffset: 0,
         duration: 1.33,
-        ease: "power3.inOut",
+        ease: 'power3.inOut',
         onComplete: () => {
           const paths = trigger.getAttribute('data-paths');
-          if (paths) paths.split(',').forEach(p => animatePath(p.trim()));
+          if (paths) paths.split(',').forEach((p) => animatePath(p.trim()));
 
           setTimeout(() => {
-            const comboClass = Array.from(trigger.classList).find(cls => cls.startsWith("combo-"));
-            answers.forEach(ans => {
-              gsap.set(ans, { display: "none" });
+            const comboClass = Array.from(trigger.classList).find((cls) =>
+              cls.startsWith('combo-'),
+            );
+            answers.forEach((ans) => {
+              gsap.set(ans, { display: 'none' });
               const p = lottieInstances.get(ans);
-              if (p && p.stop) { p.stop(); p.seek(0); }
+              if (p && p.stop) {
+                p.stop();
+                p.seek(0);
+              }
             });
 
             if (comboClass) {
-              const matching = document.querySelector(`.base_ai_answer_card.${comboClass}`) as HTMLElement;
+              const matching = document.querySelector(
+                `.base_ai_answer_card.${comboClass}`,
+              ) as HTMLElement;
               if (matching) {
-                gsap.set(matching, { display: "block", opacity: 0, y: 20 });
+                gsap.set(matching, { display: 'block', opacity: 0, y: 20 });
                 gsap.to(matching, {
-                  opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.7,
+                  ease: 'power3.out',
                   onComplete: () => {
                     const p = lottieInstances.get(matching);
                     if (p) {
                       if (p.ready !== false) p.play();
                       else p.addEventListener('ready', () => p.play(), { once: true });
                     }
-                  }
+                  },
                 });
               }
             }
           }, 1000);
-        }
+        },
       });
     };
 
     if (ScrollTrigger) {
       ScrollTrigger.create({
-        trigger: ".base_ai_question",
-        start: "top 90%",
+        trigger: '.base_ai_question',
+        start: 'top 90%',
         once: true,
         onEnter: () => {
           const first = document.querySelector('.base_ai_question');
           if (first) triggerQuestion(first);
-        }
+        },
       });
     }
 
-    triggers.forEach(trigger => {
+    triggers.forEach((trigger) => {
       trigger.addEventListener('click', () => triggerQuestion(trigger));
     });
   }
