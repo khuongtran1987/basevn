@@ -1,0 +1,41 @@
+body {
+  --start-color: #6ae8a5;
+  --end-color: #0bad57;
+}
+
+.platform_rich_text strong,
+.platform_rich_text b {
+  display: inline-block;
+  background: linear-gradient(to right, var(--start-color), var(--end-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.platform_name {
+  background: linear-gradient(to right, #6ae8a5, #0bad57);
+  -webkit-background-clip: text;
+  /* This clips the background to the text */
+  color: transparent;
+  /* Makes the text transparent to show the background gradient */
+}
+
+.button-bg {
+  background: linear-gradient(180deg, #0bad57 0%, #6ae8a5 100%);
+}
+
+
+/* Targets all slider dots */
+.w-slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #e2e8ff;
+  /* 10% opacity */
+  transition: background-color 0.3s ease;
+}
+
+/* Targets the active slider dot */
+.w-slider-dot.w-active {
+  background-color: #1e88e5;
+}
