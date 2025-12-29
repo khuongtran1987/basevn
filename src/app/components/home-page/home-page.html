@@ -1,4 +1,34 @@
-<div class="overlay"></div>
+<div class="gradient-bg" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-filter">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix
+          in="blur"
+          mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+          result="goo"
+        />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="gradients-container">
+    <div class="gradient-blob g1"></div>
+
+    <div class="gradient-blob g2"></div>
+
+    <div class="gradient-blob g3"></div>
+
+    <div class="gradient-blob g4"></div>
+
+    <div class="gradient-blob g5"></div>
+
+    <div class="gradient-interactive"></div>
+  </div>
+</div>
+
 <div class="page-wrapper">
   <div class="global-styles w-embed"></div>
   <div
@@ -16,9 +46,9 @@
       <a href="index.html" aria-current="page" class="navbar_logo-link w-nav-brand w--current">
         <div class="uui-logo_component">
           <img
-            src="https://cdn.prod.website-files.com/6825ae09c11a1a7d6a345ec6/683d168bd10ceb8fa84b304c_base white logo.avif"
+            src="assets/logos/llb_logo.png"
             loading="lazy"
-            alt="base&#x27;s logo"
+            alt="LLB logo"
             class="uui-logo_logotype"
           />
         </div>
@@ -1942,6 +1972,7 @@
       </div>
     </div>
   </div>
+
   <main class="main-wrapper">
     <div data-w-id="0560ea31-da35-5b48-d7a7-45bbe8d922b7" class="nav-trigger"></div>
     <section class="section">
@@ -1950,16 +1981,16 @@
           <div class="hero_layout">
             <div id="w-node-_1823609d-a0c2-6975-19d5-73cc4c8882c8-6a345f09" class="hero_title_wrap">
               <h1 class="heading-style-h1 hero-dark-mode">
-                <span class="light_linear_text">Nền tảng quản trị <br />doanh nghiệp </span
-                ><span class="brand_linear_text">toàn diện</span>
+                <span class="light_linear_text">All-in-One Enterprise Management </span
+                ><span class="brand_linear_text">Platform</span>
               </h1>
               <div class="dark_text_medium text-size-large">
-                Nhanh chóng nắm bắt thông tin dưới góc nhìn đa chiều <br />để đưa ra quyết định
-                chính xác
+                Quickly gain insights from multiple perspectives to make accurate and informed
+                decisions.
               </div>
               <div class="button-group hero">
                 <a href="dang-ky-demo.html" class="button darkmode w-inline-block">
-                  <div>Đăng ký Demo</div>
+                  <div>Sign Up for a Demo</div>
                   <div class="button_hover_light w-embed">
                     <div class="svg-bg">
                       <svg
@@ -2041,16 +2072,17 @@
         />
       </div>
     </section>
+
     <section class="section">
       <div class="padding-global padding-section-small">
         <div class="container-large">
           <div class="logo_content text-align-center">
             <h2 class="marquee_header">
               <span class="text-span stroke-gradient nomove"
-                ><strong class="glass_text_wrapper _10000">10,000+</strong></span
+                ><strong class="glass_text_wrapper _10000"
+                  >TRUST & SOCIAL PROOF – Trusted by Businesses</strong
+                ></span
               >
-              doanh nghiệp đã chuyển mình cùng
-              <span class="highlight-text text-color-brand">Base</span>
             </h2>
             <div class="spacer-small"></div>
             <div data-w-id="3db44792-19c7-8a89-72b5-eca7b5da2406" class="marquee_logo_wrapper">
@@ -2679,6 +2711,7 @@
         </div>
       </div>
     </section>
+
     <section class="slider-section">
       <div class="card_staking_light_wrapper"></div>
       <div class="padding-global">
@@ -2690,7 +2723,7 @@
                 style="opacity: 0"
                 class="heading-style-h2-animated dark-text-color-primary"
               >
-                Một nền tảng
+                Solutions
               </h3>
               <div
                 data-w-id="d4513efb-7de6-fff3-705c-5e71893d17fc"
@@ -2702,7 +2735,7 @@
                 style="opacity: 0"
                 class="heading-style-h2-animated dark-text-color-primary"
               >
-                Mọi giải pháp
+                Core Product Lines
               </h2>
               <div
                 data-w-id="aaa19baa-201d-6599-8d52-33c3478d5461"
@@ -2737,7 +2770,7 @@
                       <div class="text-size-medium text-weight-semibold work">BASE WORK+</div>
                       <div class="spacer-xsmall"></div>
                       <h3 class="heading-style-h3 dark-text-color-primary">
-                        Quản trị công việc thông minh, <br />kết nối các phòng ban hiệu quả
+                        AI & Smart Surveillance Solutions
                       </h3>
                       <div class="spacer-24px"></div>
                       <ul role="list" class="base_products_list">
@@ -2759,7 +2792,7 @@
                               />
                             </svg>
                           </div>
-                          <div>Giao việc và theo dõi tiến độ theo phòng ban, dự án</div>
+                          <div>Aegis Video AI – Advanced AI-powered video analytics.</div>
                         </li>
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
@@ -2779,27 +2812,7 @@
                               />
                             </svg>
                           </div>
-                          <div>Phê duyệt đề xuất mọi lúc mọi nơi, phân quyền chặt chẽ</div>
-                        </li>
-                        <li class="dark--product_list_item">
-                          <div class="icon-1x1-20px w-embed">
-                            <svg
-                              width="100%"
-                              height="100%"
-                              viewBox="0 0 20 21"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M10 3.83329V13.1666C10 14.5668 10 15.2668 10.2725 15.8016C10.5122 16.272 10.8946 16.6545 11.365 16.8941C11.8998 17.1666 12.5999 17.1666 14 17.1666H14.1667M14.1667 17.1666C14.1667 18.0871 14.9129 18.8333 15.8333 18.8333C16.7538 18.8333 17.5 18.0871 17.5 17.1666C17.5 16.2462 16.7538 15.5 15.8333 15.5C14.9129 15.5 14.1667 16.2462 14.1667 17.1666ZM5.83333 3.83329L14.1667 3.83329M5.83333 3.83329C5.83333 4.75377 5.08714 5.49996 4.16667 5.49996C3.24619 5.49996 2.5 4.75377 2.5 3.83329C2.5 2.91282 3.24619 2.16663 4.16667 2.16663C5.08714 2.16663 5.83333 2.91282 5.83333 3.83329ZM14.1667 3.83329C14.1667 4.75377 14.9129 5.49996 15.8333 5.49996C16.7538 5.49996 17.5 4.75377 17.5 3.83329C17.5 2.91282 16.7538 2.16663 15.8333 2.16663C14.9129 2.16663 14.1667 2.91282 14.1667 3.83329ZM10 10.5H14.1667M14.1667 10.5C14.1667 11.4204 14.9129 12.1666 15.8333 12.1666C16.7538 12.1666 17.5 11.4204 17.5 10.5C17.5 9.57949 16.7538 8.83329 15.8333 8.83329C14.9129 8.83329 14.1667 9.57949 14.1667 10.5Z"
-                                stroke="#68B0F7"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
-                          </div>
-                          <div>Tối ưu, chuẩn hóa và tự động hóa quy trình vận hành.</div>
+                          <div>Aegis Video AI – Advanced AI-powered video analytics.</div>
                         </li>
                       </ul>
                       <div class="spacer-24px"></div>
@@ -2906,14 +2919,14 @@
                             href="platform/work.html"
                             class="button is-primary-lightmode platform_app w-inline-block"
                           >
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                           </a>
                         </div>
                         <a
                           href="dang-ky-demo.html"
                           class="button-darkmode is-icon darkmode secondary w-inline-block"
                         >
-                          <div>Demo tính năng</div>
+                          <div>Feature Demo</div>
                         </a>
                       </div>
                     </div>
@@ -2943,7 +2956,7 @@
                       <div class="text-size-medium text-weight-semibold hrm">BASE HRM+</div>
                       <div class="spacer-xsmall"></div>
                       <h3 class="heading-style-h3 dark-text-color-primary">
-                        Kiến tạo trải nghiệm nhân sự<br />hạnh phúc
+                        Digital Investigation & Identity Tracing Solutions
                       </h3>
                       <div class="spacer-24px"></div>
                       <ul role="list" class="base_products_list">
@@ -2965,7 +2978,7 @@
                               />
                             </svg>
                           </div>
-                          <div>Thu hút, tuyển dụng, và giữ chân nhân tài</div>
+                          <div>NetTrace IP – Network IP address identification and tracing.</div>
                         </li>
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
@@ -2992,7 +3005,7 @@
                               </defs>
                             </svg>
                           </div>
-                          <div>Hệ thống thông tin nhân sự &amp; quy trình onboarding</div>
+                          <div>NetTrace IP – Network IP address identification and tracing.</div>
                         </li>
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
@@ -3012,7 +3025,7 @@
                               />
                             </svg>
                           </div>
-                          <div>Chấm công đa ca, tính lương tự động, phúc lợi rõ ràng</div>
+                          <div>FaceTrace AI – Anonymous identity tracing from image data.</div>
                         </li>
                       </ul>
                       <div class="spacer-24px"></div>
@@ -3119,14 +3132,14 @@
                             href="platform/hrm.html"
                             class="button is-primary-lightmode platform_app w-inline-block"
                           >
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                           </a>
                         </div>
                         <a
                           href="dang-ky-demo.html"
                           class="button-darkmode is-icon darkmode secondary w-inline-block"
                         >
-                          <div>Demo tính năng</div>
+                          <div>Feature Demo</div>
                         </a>
                       </div>
                     </div>
@@ -3142,13 +3155,14 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="product_slides w-slide">
                   <div class="base_products_card-tablet info">
                     <div class="base_products_left">
                       <div class="text-size-medium text-weight-semibold info">BASE INFO+</div>
                       <div class="spacer-xsmall"></div>
                       <h3 class="heading-style-h3 dark-text-color-primary">
-                        Thông tin rõ ràng, văn hoá<br />doanh nghiệp minh bạch
+                        Social Media Data Collection & Analytics Solutions
                       </h3>
                       <div class="spacer-24px"></div>
                       <ul role="list" class="base_products_list">
@@ -3170,7 +3184,9 @@
                               />
                             </svg>
                           </div>
-                          <div>Xây dựng văn hóa, gắn kết nội bộ</div>
+                          <div>
+                            Social Network Crawl – Data collection from social media platforms.
+                          </div>
                         </li>
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
@@ -3190,27 +3206,10 @@
                               />
                             </svg>
                           </div>
-                          <div>Ban hành &amp; lưu trữ văn bản hiệu quả, khoa học</div>
-                        </li>
-                        <li class="dark--product_list_item">
-                          <div class="icon-1x1-20px w-embed">
-                            <svg
-                              width="100%"
-                              height="100%"
-                              viewBox="0 0 20 21"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M10.8346 6.33333L9.90502 4.4741C9.63747 3.939 9.50369 3.67144 9.30411 3.47597C9.12762 3.30311 8.91491 3.17164 8.68136 3.09109C8.41727 3 8.11814 3 7.51988 3H4.33464C3.40121 3 2.9345 3 2.57798 3.18166C2.26438 3.34144 2.00941 3.59641 1.84962 3.91002C1.66797 4.26654 1.66797 4.73325 1.66797 5.66667V6.33333M1.66797 6.33333H14.3346C15.7348 6.33333 16.4348 6.33333 16.9696 6.60582C17.44 6.8455 17.8225 7.22795 18.0622 7.69836C18.3346 8.23314 18.3346 8.9332 18.3346 10.3333V14C18.3346 15.4001 18.3346 16.1002 18.0622 16.635C17.8225 17.1054 17.44 17.4878 16.9696 17.7275C16.4348 18 15.7348 18 14.3346 18H5.66797C4.26784 18 3.56777 18 3.03299 17.7275C2.56259 17.4878 2.18014 17.1054 1.94045 16.635C1.66797 16.1002 1.66797 15.4001 1.66797 14V6.33333ZM12.918 15.0833L11.668 13.8333M12.5013 11.75C12.5013 13.3608 11.1955 14.6667 9.58464 14.6667C7.97381 14.6667 6.66797 13.3608 6.66797 11.75C6.66797 10.1392 7.97381 8.83333 9.58464 8.83333C11.1955 8.83333 12.5013 10.1392 12.5013 11.75Z"
-                                stroke="#6AE8A5"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
+                          <div>
+                            Social Insight AI – Data analysis, aggregation, violation detection,
+                            sentiment, and entity recognition.
                           </div>
-                          <div>Tạo kho tri thức tập trung, dễ tìm, dễ chia sẻ</div>
                         </li>
                       </ul>
                       <div class="spacer-24px"></div>
@@ -3319,14 +3318,14 @@
                             href="platform/info.html"
                             class="button is-primary-lightmode platform_app w-inline-block"
                           >
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                           </a>
                         </div>
                         <a
                           href="dang-ky-demo.html"
                           class="button-darkmode is-icon darkmode secondary w-inline-block"
                         >
-                          <div>Demo tính năng</div>
+                          <div>Feature Demo</div>
                         </a>
                       </div>
                     </div>
@@ -3354,7 +3353,7 @@
                       <div class="text-size-medium text-weight-semibold finance">BASE FINANCE+</div>
                       <div class="spacer-xsmall"></div>
                       <h3 class="heading-style-h3 dark-text-color-primary">
-                        Quản trị tài chính thời gian thực
+                        Voice, Audio & Multimedia Processing Solutions
                       </h3>
                       <div class="spacer-24px"></div>
                       <ul role="list" class="base_products_list">
@@ -3376,8 +3375,9 @@
                               />
                             </svg>
                           </div>
-                          <div>Quản trị chi phí và doanh thu theo thời gian thực</div>
+                          <div>Audio Trace AI – Voice and audio identification and tracing.</div>
                         </li>
+
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
                             <svg
@@ -3396,8 +3396,12 @@
                               />
                             </svg>
                           </div>
-                          <div>Duyệt chi và đối soát theo quy trình rõ ràng</div>
+                          <div>
+                            VoiceInsight Lite – Speech transcription, translation, and content
+                            summarization.
+                          </div>
                         </li>
+
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
                             <svg
@@ -3416,7 +3420,30 @@
                               />
                             </svg>
                           </div>
-                          <div>Quản lý tài sản, mua sắm và thanh toán tập trung</div>
+                          <div>MediaInsight OCR – Audio, video analysis, and document OCR.</div>
+                        </li>
+
+                        <li class="dark--product_list_item">
+                          <div class="icon-1x1-20px w-embed">
+                            <svg
+                              width="100%"
+                              height="100%"
+                              viewBox="0 0 20 21"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M3.33464 15.5V15.3333C3.33464 13.9332 3.33464 13.2331 3.60712 12.6983C3.8468 12.2279 4.22925 11.8455 4.69966 11.6058C5.23444 11.3333 5.9345 11.3333 7.33464 11.3333H12.668C14.0681 11.3333 14.7682 11.3333 15.3029 11.6058C15.7734 11.8455 16.1558 12.2279 16.3955 12.6983C16.668 13.2331 16.668 13.9332 16.668 15.3333V15.5M3.33464 15.5C2.41416 15.5 1.66797 16.2462 1.66797 17.1666C1.66797 18.0871 2.41416 18.8333 3.33464 18.8333C4.25511 18.8333 5.0013 18.0871 5.0013 17.1666C5.0013 16.2462 4.25511 15.5 3.33464 15.5ZM16.668 15.5C15.7475 15.5 15.0013 16.2462 15.0013 17.1666C15.0013 18.0871 15.7475 18.8333 16.668 18.8333C17.5884 18.8333 18.3346 18.0871 18.3346 17.1666C18.3346 16.2462 17.5884 15.5 16.668 15.5ZM10.0013 15.5C9.08083 15.5 8.33464 16.2462 8.33464 17.1666C8.33464 18.0871 9.08083 18.8333 10.0013 18.8333C10.9218 18.8333 11.668 18.0871 11.668 17.1666C11.668 16.2462 10.9218 15.5 10.0013 15.5ZM10.0013 15.5V7.16663M5.0013 7.16663H15.0013C15.7779 7.16663 16.1662 7.16663 16.4724 7.03976C16.8808 6.8706 17.2053 6.54615 17.3744 6.13777C17.5013 5.83148 17.5013 5.4432 17.5013 4.66663C17.5013 3.89006 17.5013 3.50177 17.3744 3.19549C17.2053 2.78711 16.8808 2.46265 16.4724 2.29349C16.1662 2.16663 15.7779 2.16663 15.0013 2.16663H5.0013C4.22473 2.16663 3.83645 2.16663 3.53016 2.29349C3.12178 2.46265 2.79733 2.78711 2.62817 3.19549C2.5013 3.50177 2.5013 3.89006 2.5013 4.66663C2.5013 5.4432 2.5013 5.83148 2.62817 6.13777C2.79733 6.54615 3.12178 6.8706 3.53016 7.03976C3.83645 7.16663 4.22473 7.16663 5.0013 7.16663Z"
+                                stroke="#68B0F7"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <div>
+                            AudioClean AI – AI-powered audio enhancement and noise reduction.
+                          </div>
                         </li>
                       </ul>
                       <div class="spacer-24px"></div>
@@ -3523,14 +3550,14 @@
                             href="platform/finance.html"
                             class="button is-primary-lightmode platform_app w-inline-block"
                           >
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                           </a>
                         </div>
                         <a
                           href="dang-ky-demo.html"
                           class="button-darkmode is-icon darkmode secondary w-inline-block"
                         >
-                          <div>Demo tính năng</div>
+                          <div>Feature Demo</div>
                         </a>
                       </div>
                     </div>
@@ -3553,7 +3580,7 @@
                       <div class="text-size-medium text-weight-semibold crm">BASE CRM</div>
                       <div class="spacer-xsmall"></div>
                       <h3 class="heading-style-h3 dark-text-color-primary">
-                        Đồng bộ hành trình khách hàng,<br />từ bán hàng đến hậu mãi
+                        Internal Platform & Knowledge Management Solutions
                       </h3>
                       <div class="spacer-24px"></div>
                       <ul role="list" class="base_products_list">
@@ -3575,7 +3602,9 @@
                               />
                             </svg>
                           </div>
-                          <div>Quản lý pipeline và sản phẩm dễ dàng</div>
+                          <div>
+                            SecureWork – Secure internal messaging and collaboration platform.
+                          </div>
                         </li>
                         <li class="dark--product_list_item">
                           <div class="icon-1x1-20px w-embed">
@@ -3595,27 +3624,10 @@
                               />
                             </svg>
                           </div>
-                          <div>Tự động hóa tác vụ bán hàng, báo giá, hợp đồng</div>
-                        </li>
-                        <li class="dark--product_list_item">
-                          <div class="icon-1x1-20px w-embed">
-                            <svg
-                              width="100%"
-                              height="100%"
-                              viewBox="0 0 20 21"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M5.07994 9.85741C5.02814 9.5236 5.00127 9.18163 5.00127 8.83342C5.00127 5.15152 8.00568 2.16675 11.7118 2.16675C15.4179 2.16675 18.4223 5.15152 18.4223 8.83342C18.4223 9.66514 18.269 10.4613 17.9889 11.1955C17.9308 11.348 17.9017 11.4242 17.8885 11.4838C17.8754 11.5427 17.8703 11.5842 17.8689 11.6446C17.8675 11.7056 17.8757 11.7727 17.8923 11.907L18.2278 14.6322C18.2641 14.9272 18.2822 15.0747 18.2332 15.1819C18.1902 15.2759 18.1138 15.3505 18.0189 15.3913C17.9105 15.4379 17.7635 15.4164 17.4694 15.3733L14.815 14.9842C14.6764 14.9639 14.6071 14.9537 14.544 14.9541C14.4816 14.9544 14.4384 14.959 14.3773 14.9719C14.3155 14.9849 14.2366 15.0144 14.0788 15.0735C13.3427 15.3492 12.545 15.5001 11.7118 15.5001C11.3633 15.5001 11.021 15.4737 10.6869 15.4228M6.36095 18.8334C8.8317 18.8334 10.8346 16.7814 10.8346 14.2501C10.8346 11.7188 8.8317 9.66675 6.36095 9.66675C3.8902 9.66675 1.88727 11.7188 1.88727 14.2501C1.88727 14.7589 1.9682 15.2484 2.11759 15.7057C2.18074 15.899 2.21232 15.9957 2.22268 16.0617C2.2335 16.1306 2.2354 16.1694 2.23137 16.239C2.22751 16.3057 2.21081 16.3812 2.17742 16.532L1.66797 18.8334L4.16364 18.4926C4.29986 18.474 4.36797 18.4647 4.42744 18.4651C4.49007 18.4655 4.52331 18.4689 4.58473 18.4811C4.64306 18.4928 4.72977 18.5234 4.90319 18.5846C5.36013 18.7458 5.85056 18.8334 6.36095 18.8334Z"
-                                stroke="#38C36F"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              />
-                            </svg>
+                          <div>
+                            DocInsight AI – Document management, digitization, and AI-powered Q&A
+                            for administrative records.
                           </div>
-                          <div>Chăm sóc sau bán: ticket, feedback, upsell</div>
                         </li>
                       </ul>
                       <div class="spacer-24px"></div>
@@ -3704,14 +3716,14 @@
                             href="crm.html"
                             class="button is-primary-lightmode platform_app w-inline-block"
                           >
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                           </a>
                         </div>
                         <a
                           href="dang-ky-demo.html"
                           class="button-darkmode is-icon darkmode secondary w-inline-block"
                         >
-                          <div>Demo tính năng</div>
+                          <div>Feature Demo</div>
                         </a>
                       </div>
                     </div>
@@ -3774,17 +3786,15 @@
       </div>
       <div class="base_products_light cards"></div>
     </section>
+
     <section class="section">
       <div class="padding-global">
         <div class="padding-section-xlarge industry">
           <div class="container-large tab-industry">
             <div class="section_content_center text-align-center">
               <h2 class="heading-style-h2 dark-text-color-primary nganh-heading">
-                <span class="brand_linear_text"><strong>Linh hoạt đáp ứng</strong></span
-                ><strong> <br />‍</strong
-                ><span class="text-span stroke-gradient"
-                  ><strong class="glass_text_wrapper">60+</strong></span
-                ><strong> </strong>lĩnh vực trên một nền tảng duy nhất
+                <span class="brand_linear_text"><strong>Industry-Specific Solutions</strong></span
+                ><strong> <br />‍</strong>
               </h2>
               <div class="light_blur industry"></div>
               <div class="spacer-40px"></div>
@@ -3795,7 +3805,7 @@
                 data-duration-out="100"
                 class="industry_tab w-tabs"
               >
-                <div
+                <!-- <div
                   data-w-id="18ef643c-c999-be23-21fb-16a690752979"
                   style="opacity: 0"
                   class="industry_tab_menu w-tab-menu"
@@ -4179,7 +4189,8 @@
                     <div>Khác</div>
                     <div class="industry_tab_light"></div>
                   </a>
-                </div>
+                </div> -->
+
                 <div class="industry_tab_content margin-top margin-large w-tab-content">
                   <div data-w-tab="Sản xuất điẹn" class="w-tab-pane w--tab-active">
                     <div class="industry_tab_content_wrap">
@@ -4229,7 +4240,10 @@
                         class="industry_tab_right"
                       >
                         <div class="industry_text_layout text-align-left">
-                          <div class="heading-style-h3 dark-text-color-primary">Ngành Sản xuất</div>
+                          <div class="heading-style-h3 dark-text-color-primary">
+                            Showcase LLB’s core capabilities and applications across key industries,
+                            including:
+                          </div>
                         </div>
                         <div class="industry_list_wrapper">
                           <ul role="list" class="industry_list">
@@ -4261,10 +4275,7 @@
                                   </defs>
                                 </svg>
                               </div>
-                              <div>
-                                Số hóa quy trình theo tiêu chuẩn ISO, chủ động kiểm soát tiến độ sản
-                                xuất.
-                              </div>
+                              <div>Government & Regulatory Authorities</div>
                             </li>
                             <li class="dark--product_list_item">
                               <div class="icon-1x1-20px w-embed">
@@ -4294,10 +4305,7 @@
                                   </defs>
                                 </svg>
                               </div>
-                              <div>
-                                Thiết lập &amp; quản lý kế hoạch sản xuất khoa học, liên kết với quy
-                                trình xử lý đơn hàng, quy trình xuất nhập kho,...
-                              </div>
+                              <div>Public Security & Law Enforcement</div>
                             </li>
                             <li class="dark--product_list_item">
                               <div class="icon-1x1-20px w-embed">
@@ -4327,14 +4335,12 @@
                                   </defs>
                                 </svg>
                               </div>
-                              <div>
-                                Báo cáo doanh thu, chi phí, công nợ trực quan theo thời gian thực.
-                              </div>
+                              <div>National Defense & Security Agencies</div>
                             </li>
                           </ul>
                         </div>
                         <div class="tab_industry_client">
-                          <div>Khách hàng của Base</div>
+                          <div>Customers of LLB Global</div>
                           <div class="tab_industry_client_logo">
                             <div class="industry_client_logo_wrapper">
                               <div class="industry_client_logo">
@@ -4375,7 +4381,7 @@
                           </div>
                         </div>
                         <a href="industry/san-xuat.html" class="button darkmode w-inline-block">
-                          <div>Tìm hiểu thêm</div>
+                          <div>Learn more</div>
                           <div class="button_hover_light w-embed">
                             <div class="svg-bg">
                               <svg
@@ -6475,7 +6481,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%201.json"
+                      data-lottie-path="assets/data/card-8.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6484,7 +6490,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%208.json"
+                      data-lottie-path="assets/data/card-8.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6493,7 +6499,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%202.json"
+                      data-lottie-path="assets/data/card-1.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6502,7 +6508,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%203.json"
+                      data-lottie-path="assets/data/card-2.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6511,7 +6517,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%205.json"
+                      data-lottie-path="assets/data/card-3.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6520,7 +6526,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card%206.json"
+                      data-lottie-path="assets/data/card-8.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -6529,7 +6535,7 @@
                   <div class="w-embed">
                     <div
                       class="lottie_wrapper"
-                      data-lottie-path="https://storage.googleapis.com/basecomvn-data//landing/card_json/Card7.json"
+                      data-lottie-path="assets/data/card-2.json"
                       style="width: 100%; height: auto"
                     ></div>
                   </div>
@@ -8379,7 +8385,7 @@
                             </div>
                           </div>
                           <a href="#" class="button_brand_text_link hide w-inline-block">
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                             <div class="icon-1x1-small w-embed">
                               <svg
                                 width="100%"
@@ -8440,7 +8446,7 @@
                             </div>
                           </div>
                           <a href="#" class="button_brand_text_link hide w-inline-block">
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                             <div class="icon-1x1-small w-embed">
                               <svg
                                 width="100%"
@@ -8500,7 +8506,7 @@
                             </div>
                           </div>
                           <a href="#" class="button_brand_text_link hide w-inline-block">
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                             <div class="icon-1x1-small w-embed">
                               <svg
                                 width="100%"
@@ -8565,7 +8571,7 @@
                             </div>
                           </div>
                           <a href="#" class="button_brand_text_link hide w-inline-block">
-                            <div>Xem chi tiết</div>
+                            <div>View Details</div>
                             <div class="icon-1x1-small w-embed">
                               <svg
                                 width="100%"
@@ -10196,75 +10202,53 @@
         <div class="container-large footer_container">
           <div class="footer_grid">
             <div class="footer_links_layout">
-              <div class="footer_links_header">Công ty</div>
+              <div class="footer_links_header">Company</div>
               <div class="footer_links_content">
-                <a href="about-us.html" class="footer_links">Giới thiệu</a
+                <a href="about-us.html" class="footer_links">About LLB Global</a
                 ><a href="https://customers.base.vn/" target="_blank" class="footer_links"
-                  >Khách hàng</a
-                ><a href="index.html" target="_blank" class="footer_links">Báo chí</a
-                ><a href="https://careers.base.vn/" target="_blank" class="footer_links"
-                  >Tuyển dụng</a
-                ><a href="doi-tac.html" class="footer_links">Đối tác</a>
+                  >Customers</a
+                ><a href="index.html" target="_blank" class="footer_links">News</a
+                ><a href="https://careers.base.vn/" target="_blank" class="footer_links">Careers</a
+                ><a href="doi-tac.html" class="footer_links">Partners</a>
               </div>
             </div>
+
             <div class="footer_links_layout">
-              <div class="footer_links_header">Bộ sản phẩm</div>
+              <div class="footer_links_header">Products</div>
               <div class="footer_links_content">
-                <a href="platform/work.html" class="footer_links">Base Work+</a
-                ><a href="platform/hrm.html" class="footer_links">Base HRM+</a
-                ><a href="crm.html" class="footer_links">Base CRM</a
-                ><a href="platform/finance.html" class="footer_links">Base Finance+</a
-                ><a href="platform/info.html" class="footer_links">Base Info+</a>
+                <a href="platform/work.html" class="footer_links">Aegis Video AI</a
+                ><a href="platform/hrm.html" class="footer_links">NetTrace IP </a
+                ><a href="crm.html" class="footer_links">Social Insight AI</a
+                ><a href="platform/finance.html" class="footer_links">VoiceInsight Pro</a
+                ><a href="platform/info.html" class="footer_links">SecureWork </a>
               </div>
             </div>
+
             <div class="footer_links_layout">
-              <div class="footer_links_header">Sản phẩm</div>
+              <div class="footer_links_header">Product Suite</div>
               <div class="footer_links_content">
-                <a href="app/xspace.html" class="footer_links">Base XSpace</a
-                ><a href="app/workflow.html" class="footer_links">Base Workflow</a
-                ><a href="app/request.html" class="footer_links">Base Request</a
-                ><a href="app/schedule.html" class="footer_links">Base Schedule</a
-                ><a href="app/finance.html" class="footer_links">Base Finance</a>
+                <a href="app/xspace.html" class="footer_links">AI & Surveillance </a
+                ><a href="app/workflow.html" class="footer_links">Digital Investigation</a
+                ><a href="app/request.html" class="footer_links">Social Media </a
+                ><a href="app/schedule.html" class="footer_links">Voice & Multimedia</a
+                ><a href="app/finance.html" class="footer_links">Internal Platform</a>
               </div>
             </div>
+
             <div class="footer_links_layout">
-              <div class="footer_links_header">Giải pháp</div>
+              <div class="footer_links_header">Support</div>
               <div class="footer_links_content">
-                <a href="solutions/digital-workspace.html" class="footer_links">Digital Workspace</a
-                ><a href="solutions/employee-happiness.html" class="footer_links"
-                  >Employee Happiness</a
+                <a href="solutions/digital-workspace.html" class="footer_links">Contact</a
+                ><a href="solutions/employee-happiness.html" class="footer_links">Documentation </a
                 ><a href="solutions/digital-transformation.html" class="footer_links"
-                  >Digital Transformation</a
-                ><a href="solutions/finance-management.html" class="footer_links"
-                  >Financial Management</a
-                >
-              </div>
-            </div>
-            <div class="footer_links_layout">
-              <div class="footer_links_header">Ngành</div>
-              <div class="footer_links_content">
-                <a href="industry/san-xuat.html" class="footer_links">Sản xuất</a
-                ><a href="industry/f-b.html" class="footer_links">F&amp;B</a
-                ><a href="industry/giao-duc.html" class="footer_links">Giáo dục</a
-                ><a href="industry/logistics.html" class="footer_links">Logistics</a
-                ><a href="industry/duoc.html" class="footer_links">Dược</a>
-              </div>
-            </div>
-            <div class="footer_links_layout">
-              <div class="footer_links_header">Hỗ trợ</div>
-              <div class="footer_links_content">
-                <a href="lien-he.html" class="footer_links">Liên hệ</a
-                ><a href="developer-center.html" class="footer_links">Developers</a
-                ><a
-                  href="https://www.facebook.com/groups/base.vncommunity"
-                  target="_blank"
-                  class="footer_links"
-                  >Hỏi đáp và chia sẻ</a
-                ><a href="ai-content-hub.html" class="footer_links">AI Content Hub</a>
+                  >API Reference</a
+                ><a href="solutions/finance-management.html" class="footer_links">Request Demo</a>
               </div>
             </div>
           </div>
+
           <div class="dark_divider"></div>
+
           <div class="footer_locations_grid">
             <div class="footer_locations_card">
               <div class="footer_locations_header">
@@ -10413,16 +10397,15 @@
                 <div class="u-visual-wrap">
                   <img
                     loading="lazy"
-                    src="https://cdn.prod.website-files.com/6825ae09c11a1a7d6a345ec6/683d168bd10ceb8fa84b304c_base white logo.avif"
-                    alt="base&#x27;s logo"
+                    src="assets/logos/llb_logo.png"
+                    alt="LLB logo"
                     class="u-visual"
                   />
                 </div>
               </a>
-              <div class="text-size-medium dark-text-color-primary text-weight-semibold">
-                Công ty cổ phần Base Enterprise
-              </div>
+              <div class="text-size-medium dark-text-color-primary text-weight-semibold"></div>
             </div>
+
             <div
               id="w-node-_0ab7eaa1-172e-856b-b2f0-d83866d117be-cb94ac3a"
               class="footer_bottom_left"
@@ -10992,8 +10975,10 @@
       </a>
     </div>
   </main>
+
   <div class="dark_dots_scroll_bar w-embed"></div>
 </div>
+
 <div class="cookies">
   <div id="consentPopup" fs-cc="banner" class="fs-cookie-popup">
     <div class="padding-global">

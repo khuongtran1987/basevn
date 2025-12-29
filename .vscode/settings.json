@@ -1,7 +1,9 @@
 {
-  "cSpell.words": [
-    "schunk",
-    "webflow"
-  ],
-  "liveServer.settings.port": 5501
+  "cSpell.words": ["schunk", "webflow"],
+  "liveServer.settings.port": 5501,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
