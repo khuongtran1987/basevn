@@ -3921,9 +3921,9 @@ figcaption {
   font-size: 1.13rem;
 }
 
-.text-size-medium.text-weight-semibold.hrm {
+.text-size-medium.text-weight-semibold {
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(90deg, #d1d2f0, #8589ed);
+  background-image: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   display: inline-block;
@@ -10120,11 +10120,9 @@ figcaption {
 .base_products_card-tablet {
   grid-column-gap: 2.25rem;
   grid-row-gap: 2.25rem;
-  background-color: #080614;
-  background-image: url(https://cdn.prod.website-files.com/6825ae09c11a1a7d6a345ec6/683746c61dd74767b681d72a_background.avif);
-  background-position: 0 0;
+  background-color: #e2e8ff0d;
   background-size: cover;
-  border: 1px solid #fff;
+  border: 1px solid #e2e8ff1a;
   border-radius: 24px;
   flex: none;
   justify-content: flex-start;
@@ -10334,7 +10332,7 @@ figcaption {
 
 .marquee_apps_logo {
   flex: none;
-  display: flex;
+  display: none;
   overflow: hidden;
 }
 
@@ -11454,7 +11452,7 @@ figcaption {
 }
 
 .padding-section-slider-home {
-  padding-top: 5rem;
+  padding-top: 2rem;
   padding-bottom: 9rem;
 }
 
